@@ -6,7 +6,6 @@
 package ec.edu.espe.distribuidas.reserva.model;
 
 import ec.edu.espe.distribuidas.nosql.mongo.BaseEntity;
-import java.util.Objects;
 import org.mongodb.morphia.annotations.Entity;
 
 /**
@@ -24,6 +23,10 @@ public class Cliente  extends BaseEntity{
     private String telefono;
     private String email;
 
+    public Cliente() {
+    }
+    
+    
     public String getIdentificacion() {
         return identificacion;
     }
@@ -80,13 +83,29 @@ public class Cliente  extends BaseEntity{
         this.email = email;
     }
 
-
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (super.id != null ? super.id.hashCode() : 0);
+        return hash;
+    }
+    
+     @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Cliente)) {
+            return false;
+        }
+        Cliente other = (Cliente) object;
+        if ((super.id == null && other.id != null) || (super.id != null && !super.id.equals(super.id))) {
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public String toString() {
-        return "Cliente{" + "identificacion=" + identificacion + ", tipoIdentificacion=" + tipoIdentificacion + ", apellido=" + apellido + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + '}';
+        return "ec.edu.espe.distribuidas.reserva.model.Cliente[ id=" + super.id.toHexString() + " ]";
     }
 
-    
-    
 }
