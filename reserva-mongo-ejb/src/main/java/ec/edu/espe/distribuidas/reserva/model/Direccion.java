@@ -11,12 +11,12 @@ import org.mongodb.morphia.annotations.Reference;
 
 /**
  *
- * @author Ing Alvaro Vasquez
+ * @author toshiba
  */
 @Entity(noClassnameStored = true, value = "direccion")
-class Direccion extends BaseEntity {
+public class Direccion extends BaseEntity{
     
-    @Reference
+        @Reference
     private Parroquia parroquia;
     @Reference
     private Quinta quinta;
@@ -97,7 +97,6 @@ class Direccion extends BaseEntity {
     public String toString() {
         return "Direccion{" + "parroquia=" + parroquia + ", quinta=" + quinta + ", callePrincipal=" + callePrincipal + ", calleSecundaria=" + calleSecundaria + ", referencia=" + referencia + ", numCasa=" + numCasa + '}';
     }
-    
     
     
 }
