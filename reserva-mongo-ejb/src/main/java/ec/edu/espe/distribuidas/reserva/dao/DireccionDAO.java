@@ -5,7 +5,7 @@
  */
 package ec.edu.espe.distribuidas.reserva.dao;
 
-import ec.edu.espe.distribuidas.reserva.model.Canton;
+//import ec.edu.espe.distribuidas.reserva.model.Direccion;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.dao.BasicDAO;
@@ -14,9 +14,14 @@ import org.mongodb.morphia.dao.BasicDAO;
  *
  * @author toshiba
  */
-public class CantonDAO extends BasicDAO<Canton, ObjectId>{
+
+public class DireccionDAO {
     
-    public CantonDAO(Class<Canton> objectEntity, Datastore ds) {
+}
+/*public class DireccionDAO extends BasicDAO<Direccion,ObjectId>{
+    
+    public DireccionDAO(Class<Direccion> objectEntity, Datastore ds) {
         super(objectEntity, ds);
     }
-}
+
+}*/
