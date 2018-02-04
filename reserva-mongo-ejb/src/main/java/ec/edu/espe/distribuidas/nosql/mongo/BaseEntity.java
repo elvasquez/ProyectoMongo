@@ -20,7 +20,7 @@ import org.mongodb.morphia.annotations.Version;
 public abstract class BaseEntity {
 
     @Id
-    protected ObjectId id;
+    public ObjectId id;
 
     /**
      * We'll only provide getters for these attributes, setting is done in

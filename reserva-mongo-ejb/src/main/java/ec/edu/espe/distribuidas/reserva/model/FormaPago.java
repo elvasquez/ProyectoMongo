@@ -16,25 +16,15 @@ import org.mongodb.morphia.annotations.Reference;
  * @author user
  */
 @Embedded
-public class Servicio {
+public class FormaPago {
     
-    @Indexed(options = @IndexOptions(name = "servicio_codigoUIdx", unique = true))
+    @Indexed(options = @IndexOptions(name = "formaPago_codigoUIdx", unique = true))
     private String codigo;
     private String descripcion;
-    private BigDecimal precio;
     @Reference
-    private Quinta quinta;
-    
+    private Factura factura;
 
-    public Servicio() {
-    }
-
-    public Quinta getQuinta() {
-        return quinta;
-    }
-
-    public void setQuinta(Quinta quinta) {
-        this.quinta = quinta;
+    public FormaPago() {
     }
 
     public String getCodigo() {
@@ -53,14 +43,14 @@ public class Servicio {
         this.descripcion = descripcion;
     }
 
-    public BigDecimal getPrecio() {
-        return precio;
+    public Factura getFactura() {
+        return factura;
     }
 
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
+    public void setFactura(Factura factura) {
+        this.factura = factura;
     }
-
-   
+    
+    
     
 }

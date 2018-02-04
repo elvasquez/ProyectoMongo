@@ -6,7 +6,9 @@
 package ec.edu.espe.distribuidas.reserva.model;
 
 import ec.edu.espe.distribuidas.nosql.mongo.BaseEntity;
+import ec.edu.espe.distribuidas.reserva.enums.TipoIdentificacionEnum;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
 
 /**
  *
@@ -16,15 +18,27 @@ import org.mongodb.morphia.annotations.Entity;
 public class Cliente  extends BaseEntity{
    
     private String identificacion;
-    private String tipoIdentificacion;
     private String apellido;
     private String nombre;
     private String direccion;
     private String telefono;
     private String email;
+    private TipoIdentificacionEnum tipoId;
+    @Reference
+    private Factura factura;
+    
 
     public Cliente() {
     }
+
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public void setFactura(Factura factura) {
+        this.factura = factura;
+    }
+    
     
     
     public String getIdentificacion() {
@@ -33,14 +47,6 @@ public class Cliente  extends BaseEntity{
 
     public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
-    }
-
-    public String getTipoIdentificacion() {
-        return tipoIdentificacion;
-    }
-
-    public void setTipoIdentificacion(String tipoIdentificacion) {
-        this.tipoIdentificacion = tipoIdentificacion;
     }
 
     public String getApellido() {
@@ -83,6 +89,15 @@ public class Cliente  extends BaseEntity{
         this.email = email;
     }
 
+    public TipoIdentificacionEnum getTipoId() {
+        return tipoId;
+    }
+
+    public void setTipoId(TipoIdentificacionEnum tipoId) {
+        this.tipoId = tipoId;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

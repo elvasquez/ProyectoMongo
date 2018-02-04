@@ -24,8 +24,8 @@ public class Quinta extends BaseEntity{
     private String email;
     @Embedded
     private List<Servicio> servicios;
-    @Embedded
-    private List<Reserva> reservas;
+    @Reference
+    private Reserva reserva;
     @Reference
     private RepresentanteQuinta representanteQuintas;
     @Embedded
@@ -33,6 +33,11 @@ public class Quinta extends BaseEntity{
     @Reference
     private Direccion direccion;
 
+    public Quinta() {
+    }
+
+    
+    
     public String getRazonSocial() {
         return razonSocial;
     }
@@ -73,14 +78,14 @@ public class Quinta extends BaseEntity{
         this.servicios = servicios;
     }
 
-    public List<Reserva> getReservas() {
-        return reservas;
+    public Reserva getReserva() {
+        return reserva;
     }
 
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
-
+    
     public RepresentanteQuinta getRepresentanteQuintas() {
         return representanteQuintas;
     }
@@ -107,8 +112,9 @@ public class Quinta extends BaseEntity{
 
     @Override
     public String toString() {
-        return "Quinta{" + "razonSocial=" + razonSocial + ", telefono=" + telefono + ", rucQuinta=" + rucQuinta + ", email=" + email + ", representanteQuintas=" + representanteQuintas + ", direccion=" + direccion + '}';
+        return "ec.edu.espe.distribuidas.reserva.model.Quinta[ id=" + super.id.toHexString() + " ]";
     }
+
     
      @Override
     public int hashCode() {

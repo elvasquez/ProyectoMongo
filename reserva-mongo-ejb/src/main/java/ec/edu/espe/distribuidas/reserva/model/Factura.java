@@ -15,17 +15,15 @@ import org.mongodb.morphia.annotations.Reference;
  *
  * @author user
  */
-@Entity(noClassnameStored = true, value = "reserva")
-public class Reserva extends BaseEntity{
-   
+@Entity(noClassnameStored = true, value = "factura")
+public class Factura extends BaseEntity{
+    
     @Reference
     private Cliente cliente;
     private Date fechaEmision;
-    private BigDecimal valorFinal;
-    @Reference
-    private Quinta quinta;
+    private BigDecimal valorTotal;
 
-    public Reserva() {
+    public Factura() {
     }
 
     public Cliente getCliente() {
@@ -44,26 +42,17 @@ public class Reserva extends BaseEntity{
         this.fechaEmision = fechaEmision;
     }
 
-    public BigDecimal getValorFinal() {
-        return valorFinal;
+    public BigDecimal getValorTotal() {
+        return valorTotal;
     }
 
-    public void setValorFinal(BigDecimal valorFinal) {
-        this.valorFinal = valorFinal;
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
     }
-
-   
-    public Quinta getQuinta() {
-        return quinta;
-    }
-
-    public void setQuinta(Quinta quinta) {
-        this.quinta = quinta;
-    }
-
-   @Override
+    
+    @Override
     public String toString() {
-        return "ec.edu.espe.distribuidas.reserva.model.Reserva[ id=" + super.id.toHexString() + " ]";
+        return "ec.edu.espe.distribuidas.reserva.model.Factura[ id=" + super.id.toHexString() + " ]";
     }
 
      @Override
@@ -76,14 +65,14 @@ public class Reserva extends BaseEntity{
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Reserva)) {
+        if (!(object instanceof Factura)) {
             return false;
         }
-        Reserva other = (Reserva) object;
+        Factura other = (Factura) object;
         if ((super.id == null && other.id != null) || (super.id != null && !super.id.equals(super.id))) {
             return false;
         }
         return true;
     }
-       
+    
 }

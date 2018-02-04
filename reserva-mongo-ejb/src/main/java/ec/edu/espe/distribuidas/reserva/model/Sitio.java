@@ -5,10 +5,45 @@
  */
 package ec.edu.espe.distribuidas.reserva.model;
 
+import java.math.BigDecimal;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Reference;
+
 /**
  *
- * @author Ing Alvaro Vasquez
+ * @author user
  */
+@Embedded
 class Sitio {
+    
+    private Integer numPersonasPermitidas;
+    @Reference
+    private TipoSitio tipoSitio;
+    private BigDecimal precio;
+
+    public Integer getNumPersonasPermitidas() {
+        return numPersonasPermitidas;
+    }
+
+    public void setNumPersonasPermitidas(Integer numPersonasPermitidas) {
+        this.numPersonasPermitidas = numPersonasPermitidas;
+    }
+
+    public TipoSitio getTipoSitio() {
+        return tipoSitio;
+    }
+
+    public void setTipoSitio(TipoSitio tipoSitio) {
+        this.tipoSitio = tipoSitio;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+    
     
 }
