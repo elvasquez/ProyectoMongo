@@ -22,7 +22,7 @@ import javax.ejb.Stateless;
 @LocalBean
 public class RepresentanteQuintaService {
     
-     @EJB
+    @EJB
     private MongoPersistence mp;
     private RepresentanteQuintaDAO representanteQuintaFacade;
     

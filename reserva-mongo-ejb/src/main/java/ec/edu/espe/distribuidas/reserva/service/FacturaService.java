@@ -22,10 +22,10 @@ import javax.ejb.Stateless;
 @LocalBean
 public class FacturaService {
     
-     @EJB
+    @EJB
     private MongoPersistence mp;
     private FacturaDAO facturaFacade;
-    
+
     @PostConstruct
     public void init() {
         this.facturaFacade = new FacturaDAO(Factura.class, mp.context());

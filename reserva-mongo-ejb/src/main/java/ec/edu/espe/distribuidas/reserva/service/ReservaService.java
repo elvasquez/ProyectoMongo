@@ -22,7 +22,7 @@ import javax.ejb.Stateless;
 @LocalBean
 public class ReservaService {
     
-     @EJB
+    @EJB
     private MongoPersistence mp;
     private ReservaDAO reservaFacade;
     

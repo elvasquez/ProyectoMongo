@@ -22,7 +22,7 @@ import javax.ejb.Stateless;
 @LocalBean
 public class DetalleFacturaService {
     
-     @EJB
+    @EJB
     private MongoPersistence mp;
     private DetalleFacturaDAO detalleFacturaFacade;
     

@@ -22,7 +22,7 @@ import javax.ejb.Stateless;
 @LocalBean
 public class ClienteService {
     
-     @EJB
+    @EJB
     private MongoPersistence mp;
     private ClienteDAO clienteFacade;
     
