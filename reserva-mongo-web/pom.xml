@@ -40,7 +40,7 @@
             <groupId>ec.edu.espe.distruibuidas</groupId>
             <artifactId>reserva-mongo-ejb</artifactId>
             <version>1</version>
-            <type>ejb</type>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>

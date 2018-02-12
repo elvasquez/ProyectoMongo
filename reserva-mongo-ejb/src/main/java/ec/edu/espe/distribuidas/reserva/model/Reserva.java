@@ -20,10 +20,11 @@ public class Reserva extends BaseEntity{
    
     @Reference
     private Cliente cliente;
-    private Date fechaEmision;
-    private BigDecimal valorFinal;
     @Reference
     private Quinta quinta;
+    private Date fechaEmision;
+    private BigDecimal valorFinal;
+    
 
     public Reserva() {
     }

@@ -16,10 +16,11 @@ import org.mongodb.morphia.annotations.Reference;
 @Embedded
 class Sitio {
     
-    private Integer numPersonasPermitidas;
     @Reference
     private TipoSitio tipoSitio;
     private BigDecimal precio;
+    private Integer numPersonasPermitidas;
+    
 
     public Integer getNumPersonasPermitidas() {
         return numPersonasPermitidas;

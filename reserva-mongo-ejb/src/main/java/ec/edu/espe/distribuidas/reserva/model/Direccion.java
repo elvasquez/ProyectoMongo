@@ -16,7 +16,7 @@ import org.mongodb.morphia.annotations.Reference;
 @Entity(noClassnameStored = true, value = "direccion")
 public class Direccion extends BaseEntity{
     
-        @Reference
+    @Reference
     private Parroquia parroquia;
     @Reference
     private Quinta quinta;

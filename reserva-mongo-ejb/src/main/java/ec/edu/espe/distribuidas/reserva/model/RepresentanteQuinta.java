@@ -17,6 +17,8 @@ import org.mongodb.morphia.annotations.Reference;
 @Entity(noClassnameStored = true, value = "representanteQuinta")
 public class RepresentanteQuinta extends BaseEntity {
    
+    @Reference
+    private Quinta quinta; 
     private String nombre;
     private String apellido;
     private String telefono;
@@ -24,8 +26,7 @@ public class RepresentanteQuinta extends BaseEntity {
     private String identificacion;
     private String cargo;
     private TipoIdentificacionEnum tipoId;
-    @Reference
-    private Quinta quinta; 
+   
 
     public RepresentanteQuinta() {
     }

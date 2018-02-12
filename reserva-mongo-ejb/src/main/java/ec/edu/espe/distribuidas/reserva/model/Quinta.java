@@ -18,20 +18,20 @@ import org.mongodb.morphia.annotations.Reference;
 @Entity(noClassnameStored = true, value = "quinta")
 public class Quinta extends BaseEntity{
     
+    @Reference
+    private Reserva reserva;
+    @Reference
+    private RepresentanteQuinta representanteQuintas;
+    @Reference
+    private Direccion direccion;
     private String razonSocial;
     private String telefono;
     private String rucQuinta;
     private String email;
     @Embedded
     private List<Servicio> servicios;
-    @Reference
-    private Reserva reserva;
-    @Reference
-    private RepresentanteQuinta representanteQuintas;
     @Embedded
     private List<Sitio> sitios;
-    @Reference
-    private Direccion direccion;
 
     public Quinta() {
     }
