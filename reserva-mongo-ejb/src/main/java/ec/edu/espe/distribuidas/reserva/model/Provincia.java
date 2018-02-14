@@ -23,8 +23,8 @@ public class Provincia extends BaseEntity{
     private String codigo;
     private String descripcion;
     
-    @Embedded
-    private List<Canton> cantones;
+    //@Embedded
+    //private List<Canton> cantones;
 
     public Provincia() {
     }

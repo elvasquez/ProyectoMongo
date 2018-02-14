@@ -11,10 +11,9 @@
         <ui:define name="contenido">
             <p:panel id="mainPnl" header="Cliente" style="width: 80%; margin: auto;" >
                 <p:dataTable var="cliente" value="#{clienteBean.clientes}" 
-                             selectionMode="single" selection="#{clienteBean.clienteSel}" rowKey="#{cliente.identificacion}">
+                             selectionMode="single" selection="#{clienteBean.clienteSel}" rowKey="#{cliente.id}">
                     <p:ajax event="rowSelect" update="@form" />
-                    <p:ajax event="rowUnselect" update="@form" />
-                                                     
+                    <p:ajax event="rowUnselect" update="@form" />                                
                      <p:column headerText="Nombre">
                         <h:outputText value="#{cliente.nombre}" />
                     </p:column>
@@ -44,19 +43,19 @@
                 <p:commandButton value="Eliminar" actionListener="#{clienteBean.eliminar()}" update="@form" disabled="#{clienteBean.clienteSel eq null}" >
                     <p:confirm header="Confirmaci&#243;n" message="Desea eliminar el cliente: #{clienteBean.clienteSel.nombre}}" icon="ui-icon-alert" />
                 </p:commandButton>
-                
+
                 <p:panel header="#{clienteBean.titulo} Cliente" visible="#{clienteBean.habilitaForm}">
                     <p:panelGrid columns="2">
                         <p:outputLabel for="nombre" value="Nombre" />
                         <p:inputText id="nombre" value="#{clienteBean.cliente.nombre}"  />
                         <p:outputLabel for="apellido" value="Apellido" />
                         <p:inputText id="apellido" value="#{clienteBean.cliente.apellido}"  />
-                        
+
                         <p:outputLabel for="telefono" value="Telefono" />
                         <p:inputText id="telefono" value="#{clienteBean.cliente.telefono}"  />
                         <p:outputLabel for="direccion" value="Direccion" />
                         <p:inputText id="direccion" value="#{clienteBean.cliente.direccion}"  />
-                        <p:outputLabel for="tipo" value="Tipo Identificacion" />
+                        <p:outputLabel for="tipoIdentificacion" value="Tipo Identificacion" />
                         <p:selectOneMenu id="tipoIdentificacion" value="#{clienteBean.cliente.tipoIdentificacion}" disabled="#{clienteBean.enModificar}" style="width:175px">
                             <f:selectItem itemLabel="Seleccionar uno" itemValue="" />
                             <f:selectItem itemLabel="Cedula" itemValue="CED" />
@@ -66,19 +65,12 @@
                         <p:inputText id="identificacion" value="#{clienteBean.cliente.identificacion}"  />                   
                         <p:outputLabel for="email" value="Email" />
                         <p:inputText id="email" value="#{clienteBean.cliente.email}"  />
-                        
+
                     </p:panelGrid>
                     <p:commandButton value="Aceptar" actionListener="#{clienteBean.guardar}" update="@form" />
                     <p:commandButton value="Cancelar" actionListener="#{clienteBean.cancelar}" update="@form" />
-
                 </p:panel>
-
             </p:panel>
-            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-            </p:confirmDialog>
-
         </ui:define> 
     </ui:composition>
 </html>

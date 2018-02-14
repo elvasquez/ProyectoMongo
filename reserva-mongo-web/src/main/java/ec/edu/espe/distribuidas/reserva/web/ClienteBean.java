@@ -37,10 +37,6 @@ public class ClienteBean extends BaseBean implements Serializable {
         this.cliente= new Cliente();
     }
 
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-
      
     @Override
     public void agregar() {
@@ -99,6 +95,10 @@ public class ClienteBean extends BaseBean implements Serializable {
         super.reset();
         this.cliente = new Cliente();
         this.clientes = this.clienteService.obtenerTodos();
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
     }
 
     public Cliente getCliente() {

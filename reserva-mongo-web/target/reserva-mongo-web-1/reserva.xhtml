@@ -9,14 +9,13 @@
     <ui:composition template="/templates/plantilla.xhtml">
         <ui:define name="contenido">
             <p:panel id="mainPnl" header="Reserva" style="width: 50%; margin: auto;">   
-                   
-                
+
                 <p:commandButton value="Agregar" actionListener="#{reservaAdminBean.agregar()}" update="@form"/>
                 <p:panel header="Registrar Reserva" rendered="#{reservaAdminBean.habilitaForm}">
                     <p:panelGrid columns="2">
                         <p:outputLabel for="cliente" value="Cliente" />
                         <p:selectOneMenu id="cliente" value="#{reservaAdminBean.identificacionBusqueda}" rendered="true">
-                            <f:selectItems var="cliente" value="#{reservaAdminBean.listadoClientes}" itemLabel="#{cliente.identificacion}" />
+                            <f:selectItems var="cliente" value="#{reservaAdminBean.clientes}" itemLabel="#{cliente.identificacion} #{cliente.nombre} #{cliente.apellido} "  itemValue="#{cliente.identificacion}"/>
                         </p:selectOneMenu>
                         <p:outputLabel for="quinta" value="Quinta" />
                         <p:selectOneMenu id="quinta" value="#{reservaAdminBean.quintaBusqueda}">

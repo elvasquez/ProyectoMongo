@@ -38,6 +38,23 @@
         </header>
         <div id="content">
             <h:form>
+                <p:menubar>
+                    <p:submenu label="Catalogos" icon="ui-icon-document">
+                        <p:menuitem value="Tipos de Sitio" action="tipoSitio" />
+                        <p:menuitem value="Servicios" action="servicio" />
+                        <p:menuitem value="Provincia" action="provincia" />
+
+                    </p:submenu>
+                    <p:submenu label="Quintas" >
+                        <p:menuitem value="Quinta" action="quinta" />
+                        <p:menuitem value="Agregar representante" action="representanteQuinta" />
+                        <p:menuitem value="Reserva" action="reserva" />
+                    </p:submenu>
+                    <p:submenu label="Clientes" >
+                        <p:menuitem value="Agregar cliente" action="cliente" />
+
+                    </p:submenu>
+                    </p:menubar>
                 <p:growl id="growl" showDetail="true" life="3000" />
                 <ui:insert name="contenido">
                 </ui:insert>

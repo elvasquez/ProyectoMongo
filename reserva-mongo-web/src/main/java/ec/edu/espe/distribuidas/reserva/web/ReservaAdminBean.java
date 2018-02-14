@@ -29,7 +29,7 @@ import javax.inject.Named;
 public class ReservaAdminBean  extends BaseBean implements Serializable{
     
     private String identificacionBusqueda;
-    private List<Cliente> listadoClientes;
+    private List<Cliente> clientes;
     private List<Quinta> listadoQuintas;
     private List<Reserva> listadoReservas;
     private Integer quintaBusqueda;
@@ -55,11 +55,10 @@ public class ReservaAdminBean  extends BaseBean implements Serializable{
     @PostConstruct
     public void init() {
          
-        
         this.listadoReservas = this.reservaService.obtenerTodos();
         this.reserva = new Reserva();
         this.enBusquedaPorIdentificacion = true;        
-        this.listadoClientes = this.clienteService.obtenerTodos();
+        this.clientes = this.clienteService.obtenerTodos();
         this.enBusquedaPorQuinta = true;
         this.listadoQuintas = this.quintaService.obtenerTodos();
         
@@ -131,14 +130,8 @@ public class ReservaAdminBean  extends BaseBean implements Serializable{
         this.quintaBusqueda = quintaBusqueda;
     }
 
- 
-
-    public List<Cliente> getListadoClientes() {
-        return listadoClientes;
-    }
-
-    public void setListadoClientes(List<Cliente> listadoClientes) {
-        this.listadoClientes = listadoClientes;
+    public List<Cliente> getClientes() {
+        return clientes;
     }
 
     public List<Quinta> getListadoQuintas() {
