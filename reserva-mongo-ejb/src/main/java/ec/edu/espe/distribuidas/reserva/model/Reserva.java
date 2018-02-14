@@ -22,6 +22,7 @@ public class Reserva extends BaseEntity{
     private Cliente cliente;
     @Reference
     private Quinta quinta;
+    private String codigo;
     private Date fechaEmision;
     private BigDecimal valorFinal;
     
@@ -29,6 +30,14 @@ public class Reserva extends BaseEntity{
     public Reserva() {
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+        
     public Cliente getCliente() {
         return cliente;
     }

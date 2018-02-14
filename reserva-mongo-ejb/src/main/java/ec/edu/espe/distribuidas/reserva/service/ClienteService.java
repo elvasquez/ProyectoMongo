@@ -22,33 +22,37 @@ import javax.ejb.Stateless;
 @LocalBean
 public class ClienteService {
     
-    @EJB
+     @EJB
     private MongoPersistence mp;
     private ClienteDAO clienteFacade;
     
     @PostConstruct
-    public void init() {
+    public void init(){
+    
         this.clienteFacade = new ClienteDAO(Cliente.class, mp.context());
     }
-
+    
     public List<Cliente> obtenerTodos() {
         return this.clienteFacade.find().asList();
     }
-
-    public Cliente obtenerPorCodigo(String codigo) {
-        return this.clienteFacade.findOne("codigo", codigo);
+    
+    public Cliente obtenerPorIdentificacion(String identificacion) {
+        return this.clienteFacade.findOne("identificacion",identificacion);
     }
-
+    
     public void crear(Cliente cliente) {
         this.clienteFacade.save(cliente);
     }
-
+    
     public void modificar(Cliente cliente) {
+        Cliente aux = this.clienteFacade.findOne("identificacion",cliente.getIdentificacion());
+        cliente.setId(aux.getId());
         this.clienteFacade.save(cliente);
+        
     }
-
-    public void eliminar(String codigo) {
-        Cliente cliente = this.clienteFacade.findOne("codigo", codigo);
+    
+    public void eliminar(String identificacion) {
+        Cliente cliente = this.clienteFacade.findOne("identificacion",identificacion);
         this.clienteFacade.delete(cliente);
     }
     

@@ -44,6 +44,8 @@ public class TipoSitioService {
     }
 
     public void modificar(TipoSitio tipoSitio) {
+        TipoSitio aux = this.tipoSitioFacade.findOne("codigo",tipoSitio.getCodigo());
+        tipoSitio.setId(aux.getId());
         this.tipoSitioFacade.save(tipoSitio);
     }
 

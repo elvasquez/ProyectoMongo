@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="/templates/plantilla.xhtml">
+        <ui:define name="contenido">
+            <p:panel id="mainPnl" header="Datos de Quinta:" style="width: 80%; margin: auto;" >
+                <p:dataTable var="quinta" value="#{quintaBean.quintas}" 
+                             selectionMode="single" selection="#{quintaBean.quintaSel}" rowKey="#{quinta.codigo}">
+                    <p:ajax event="rowSelect" update="@form" />
+                    <p:ajax event="rowUnselect" update="@form" />
+                     <p:column headerText="C&oacute;digo">
+                         <h:outputText value="#{quinta.codigo}" />
+                    </p:column>
+                    <p:column headerText="Razon Social">
+                        <h:outputText value="#{quinta.razonSocial}" />
+                    </p:column>
+                    <p:column headerText="Provincia">
+                        <h:outputText value="#" />
+                    </p:column>
+                    <p:column headerText="Canton">
+                        <h:outputText value="#" />
+                    </p:column>
+                    <p:column headerText="Parroquia">
+                        <h:outputText value="#" />
+                    </p:column>
+                    <p:column headerText="Direccion">
+                        <h:outputText value="#{quinta.direccion}" />
+                    </p:column>
+                   <p:column headerText="Telefono">
+                       <h:outputText value="#{quinta.telefono}" />
+                    </p:column>
+                    <p:column headerText="Ruc">
+                        <h:outputText value="#{quinta.rucQuinta}" />
+                    </p:column>
+                    <p:column headerText="Email">
+                        <h:outputText value="#{quinta.email}" />
+                    </p:column>
+                    <p:column headerText="Servios">
+                        <h:outputText value="#{quinta.servicios}" />
+                    </p:column>
+                    <p:column headerText="Sitios">
+                        <h:outputText value="#{quinta.sitios}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <p:commandButton value="Agregar" actionListener="#{quintaBean.agregar()}" update="@form"/>
+                <p:commandButton id="modBtn" value="Modificar" actionListener="#{quintaBean.modificar()}" update="@form" disabled="#{quintaBean.quintaSel eq null}"/>
+                
+                <p:panel header="#{quintaBean.titulo} Quinta" visible="#{quintaBean.habilitaForm}">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="codigo" value="Codigo" />
+                        <p:inputText id="codigo" value="#{quintaBean.quinta.codigo}" disabled="#{quintaBean.enModificar}" />
+                        <p:outputLabel for="razonSocial" value="Razon Social" />
+                        <p:inputText id="razonSocial" value="#{quintaBean.quinta.razonSocial}" disabled="#{quintaBean.enModificar}" />
+                        <p:outputLabel for="provincia" value="Provincia" />
+                        <p:inputText id="provincia" value="#" disabled="#{quintaBean.enModificar}" />
+                        <p:outputLabel for="canton" value="Canton" />
+                        <p:inputText id="canton" value="#" disabled="#{quintaBean.enModificar}" />
+                        <p:outputLabel for="parroquia" value="Parroquia" />
+                        <p:inputText id="parroquia" value="#" disabled="#{quintaBean.enModificar}" />
+                        <p:outputLabel for="direccion" value="Direccion" />
+                        <p:inputText id="direccion" value="#" disabled="#{quintaBean.enModificar}" />                        
+                        <p:outputLabel for="telefono" value="Telefono" />
+                        <p:inputText id="telefono" value="#{quintaBean.quinta.telefono}" disabled="#{quintaBean.enModificar}" />
+                        <p:outputLabel for="ruc" value="Ruc" />
+                        <p:inputText id="ruc" value="#{quintaBean.quinta.rucQuinta}" disabled="#{quintaBean.enModificar}" />
+                        <p:outputLabel for="email" value="Email" />
+                        <p:inputText id="email" value="#{quintaBean.quinta.email}" disabled="#{quintaBean.enModificar}" />
+                        <p:outputLabel for="servicio" value="Servios" />
+                        <p:inputText id="servicio" value="#" disabled="#{quintaBean.enModificar}" />
+                        <p:outputLabel for="sitio" value="Sitio" />
+                        <p:inputText id="sitio" value="#" disabled="#{quintaBean.enModificar}" />
+                        
+                    </p:panelGrid>
+                    <p:commandButton value="Aceptar" actionListener="#{quintaBean.guardar}" update="@form" />
+                    <p:commandButton value="Cancelar" actionListener="#{quintaBean.cancelar}" update="@form" />
+
+                </p:panel>
+
+            </p:panel>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+
+        </ui:define> 
+    </ui:composition>
+</html>

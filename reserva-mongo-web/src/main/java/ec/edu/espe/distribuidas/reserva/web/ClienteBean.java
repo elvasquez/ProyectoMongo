@@ -5,10 +5,10 @@
  */
 package ec.edu.espe.distribuidas.reserva.web;
 
-//import ec.edu.espe.distribuidas.reserva.quinta.enums.TipoIdentificacionEnum;
+import ec.edu.espe.distribuidad.reserva.web.util.FacesUtil;
+import ec.edu.espe.distribuidas.reserva.enums.TipoIdentificacionEnum;
 import ec.edu.espe.distribuidas.reserva.model.Cliente;
 import ec.edu.espe.distribuidas.reserva.service.ClienteService;
-import ec.edu.espe.distribuidad.reserva.web.util.FacesUtil;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -52,20 +52,19 @@ public class ClienteBean extends BaseBean implements Serializable {
     public void modificar() {
         super.modificar();
         this.cliente= new Cliente();
-        //this.cliente(this.clienteSel.getId());
+        this.cliente.setIdentificacion(this.clienteSel.getIdentificacion());
+        this.cliente.setTipoIdentificacion(this.clienteSel.getTipoIdentificacion());
         this.cliente.setNombre(this.clienteSel.getNombre());
         this.cliente.setApellido(this.clienteSel.getApellido());
         this.cliente.setTelefono(this.clienteSel.getTelefono());        
-        this.cliente.setDireccion(this.clienteSel.getDireccion());        
-        //this.cliente.setTipoIdentificacion(this.clienteSel.getTipoIdentificacion());
-        this.cliente.setIdentificacion(this.clienteSel.getIdentificacion());
+        this.cliente.setDireccion(this.clienteSel.getDireccion());         
         this.cliente.setEmail(this.clienteSel.getEmail());
         
     }
     
      public void eliminar() {
         try {
-            this.clienteService.eliminar(this.clienteSel.getId());
+            this.clienteService.eliminar(this.clienteSel.getIdentificacion());
             this.clientes = this.clienteService.obtenerTodos();
             FacesUtil.addMessageInfo("Se elimino el registro ");
             this.clienteSel = null;
@@ -92,7 +91,7 @@ public class ClienteBean extends BaseBean implements Serializable {
                 FacesUtil.addMessageInfo("Se agregó el Cliente: " + this.cliente.getNombre());
             } else {
                 this.clienteService.modificar(this.cliente);
-                FacesUtil.addMessageInfo("Se modific\u00f3 el Cliente con c\u00f3digo: " + this.cliente.getId());
+                FacesUtil.addMessageInfo("Se modific\u00f3 el Cliente con c\u00f3digo: " + this.cliente.getIdentificacion());
             }
         } catch (Exception ex) {
             FacesUtil.addMessageError(null, "Ocurrí\u00f3 un error al actualizar la informaci\u00f3n");
@@ -101,10 +100,6 @@ public class ClienteBean extends BaseBean implements Serializable {
         this.cliente = new Cliente();
         this.clientes = this.clienteService.obtenerTodos();
     }
-
-    /*public TipoIdentificacionEnum[] getTiposIdentificacion(){
-        return TipoIdentificacionEnum.values();
-    }*/
 
     public Cliente getCliente() {
         return cliente;
@@ -121,7 +116,15 @@ public class ClienteBean extends BaseBean implements Serializable {
     public void setClienteSel(Cliente clienteSel) {
         this.clienteSel = clienteSel;
     }
+
+    public ClienteService getClienteService() {
+        return clienteService;
+    }
+
+    public void setClienteService(ClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
+
     
-   
 
 }

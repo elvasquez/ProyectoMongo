@@ -44,6 +44,8 @@ public class QuintaService {
     }
 
     public void modificar(Quinta quinta) {
+         Quinta aux = this.quintaFacade.findOne("codigo",quinta.getCodigo());
+         quinta.setId(aux.getId());
         this.quintaFacade.save(quinta);
     }
 

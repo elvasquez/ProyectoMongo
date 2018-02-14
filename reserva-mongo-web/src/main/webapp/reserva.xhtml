@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="/templates/plantilla.xhtml">
+        <ui:define name="contenido">
+            <p:panel id="mainPnl" header="Reserva" style="width: 50%; margin: auto;">   
+                   
+                
+                <p:commandButton value="Agregar" actionListener="#{reservaAdminBean.agregar()}" update="@form"/>
+                <p:panel header="Registrar Reserva" rendered="#{reservaAdminBean.habilitaForm}">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="cliente" value="Cliente" />
+                        <p:selectOneMenu id="cliente" value="#{reservaAdminBean.identificacionBusqueda}" rendered="true">
+                            <f:selectItems var="cliente" value="#{reservaAdminBean.listadoClientes}" itemLabel="#{cliente.identificacion}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel for="quinta" value="Quinta" />
+                        <p:selectOneMenu id="quinta" value="#{reservaAdminBean.quintaBusqueda}">
+                            <f:selectItems var="quinta" value="#{reservaAdminBean.listadoQuintas}" itemLabel="#{quinta.razonSocial}" itemValue="#{quinta.codigo}" />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel for="fechaEmision" value="Fecha Emision" />
+                        <p:calendar id="fechaEmision" value="#{reservaAdminBean.reserva.fechaEmision}" showOn="button" pattern="MM/dd/yyyy"/>
+                        <p:outputLabel for="valorFinal" value="Valor" />
+                        <p:inputText id="valorFinal" value="#{reservaAdminBean.reserva.valorFinal}"  />
+                    </p:panelGrid>
+                    <p:commandButton value="Aceptar" actionListener="#{reservaAdminBean.guardar}" update="@form" />
+                    <p:commandButton value="Cancelar" actionListener="#{reservaAdminBean.cancelar}" update="@form" immediate="true"/>
+                </p:panel>
+            </p:panel>
+        </ui:define>
+    </ui:composition>
+</html>

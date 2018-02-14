@@ -6,8 +6,9 @@
 package ec.edu.espe.distribuidas.reserva.model;
 
 import ec.edu.espe.distribuidas.nosql.mongo.BaseEntity;
-import ec.edu.espe.distribuidas.reserva.enums.TipoIdentificacionEnum;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.IndexOptions;
+import org.mongodb.morphia.annotations.Indexed;
 import org.mongodb.morphia.annotations.Reference;
 
 /**
@@ -18,18 +19,26 @@ import org.mongodb.morphia.annotations.Reference;
 public class Cliente  extends BaseEntity{
    
    @Reference
-    private Factura factura;
+   private Factura factura;
+   
+   @Indexed(options = @IndexOptions(name = "identificacion_codigoUIdx", unique = true))
     private String identificacion;
     private String apellido;
     private String nombre;
     private String direccion;
     private String telefono;
     private String email;
-    private TipoIdentificacionEnum tipoId;
+    private String tipoIdentificacion;
     
-    
-
     public Cliente() {
+    }
+
+    public String getTipoIdentificacion() {
+        return tipoIdentificacion;
+    }
+
+    public void setTipoIdentificacion(String tipoIdentificacion) {
+        this.tipoIdentificacion = tipoIdentificacion;
     }
 
     public Factura getFactura() {
@@ -39,8 +48,6 @@ public class Cliente  extends BaseEntity{
     public void setFactura(Factura factura) {
         this.factura = factura;
     }
-    
-    
     
     public String getIdentificacion() {
         return identificacion;
@@ -90,14 +97,11 @@ public class Cliente  extends BaseEntity{
         this.email = email;
     }
 
-    public TipoIdentificacionEnum getTipoId() {
-        return tipoId;
+    @Override
+    public String toString() {
+        return "ec.edu.espe.distribuidas.reserva.model.Cliente[ codCliente=" + identificacion + " ]";
     }
 
-    public void setTipoId(TipoIdentificacionEnum tipoId) {
-        this.tipoId = tipoId;
-    }
-    
     
     @Override
     public int hashCode() {
@@ -105,8 +109,8 @@ public class Cliente  extends BaseEntity{
         hash += (super.id != null ? super.id.hashCode() : 0);
         return hash;
     }
-    
-     @Override
+
+    @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Cliente)) {
@@ -118,10 +122,4 @@ public class Cliente  extends BaseEntity{
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "ec.edu.espe.distribuidas.reserva.model.Cliente[ id=" + super.id.toHexString() + " ]";
-    }
-
 }

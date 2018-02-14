@@ -24,6 +24,7 @@ public class Quinta extends BaseEntity{
     private RepresentanteQuinta representanteQuintas;
     @Reference
     private Direccion direccion;
+    private String codigo;
     private String razonSocial;
     private String telefono;
     private String rucQuinta;
@@ -36,7 +37,14 @@ public class Quinta extends BaseEntity{
     public Quinta() {
     }
 
-    
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     
     public String getRazonSocial() {
         return razonSocial;
@@ -119,7 +127,7 @@ public class Quinta extends BaseEntity{
      @Override
     public int hashCode() {
         int hash = 0;
-        hash += (super.id != null ? super.id.hashCode() : 0);
+        hash += (super.id!= null ? super.id.hashCode() : 0);
         return hash;
     }
 

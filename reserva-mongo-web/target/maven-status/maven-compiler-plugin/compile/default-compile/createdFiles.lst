@@ -1,4 +1,5 @@
 ec\edu\espe\distribuidad\reserva\web\util\MensajesGenericos.class
 ec\edu\espe\distribuidas\reserva\web\BaseBean.class
 ec\edu\espe\distribuidad\reserva\web\util\FacesUtil.class
+ec\edu\espe\distribuidas\reserva\web\ClienteBean.class
 ec\edu\espe\distribuidas\reserva\web\TipoSitioBean.class

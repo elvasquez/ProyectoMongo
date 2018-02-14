@@ -11,17 +11,13 @@
         <ui:define name="contenido">
             <p:panel id="mainPnl" header="Cliente" style="width: 80%; margin: auto;" >
                 <p:dataTable var="cliente" value="#{clienteBean.clientes}" 
-                             selectionMode="single" selection="#{clienteBean.clienteSel}" rowKey="#{cliente.id}">
+                             selectionMode="single" selection="#{clienteBean.clienteSel}" rowKey="#{cliente.identificacion}">
                     <p:ajax event="rowSelect" update="@form" />
                     <p:ajax event="rowUnselect" update="@form" />
-                    
-                    <p:column headerText="C&oacute;digo Cliente">
-                        <h:outputText value="#{cliente.id}" />
-                    </p:column>                   
+                                                     
                      <p:column headerText="Nombre">
                         <h:outputText value="#{cliente.nombre}" />
                     </p:column>
-                    
                     <p:column headerText="Apellido">
                         <h:outputText value="#{cliente.apellido}" />
                     </p:column>
@@ -61,9 +57,11 @@
                         <p:outputLabel for="direccion" value="Direccion" />
                         <p:inputText id="direccion" value="#{clienteBean.cliente.direccion}"  />
                         <p:outputLabel for="tipo" value="Tipo Identificacion" />
-                        <h:selectOneMenu value="#{clienteBean.cliente.tipoIdentificacion}" style="background-color: activeborder" >
-                            <f:selectItems id="tipo" value="#{clienteBean.tiposIdentificacion}" var="tipoIdentificacion" itemValue="#{tipoIdentificacion}" itemLabel="#{tipoIdentificacion.texto}"  />                          
-                        </h:selectOneMenu>                        
+                        <p:selectOneMenu id="tipoIdentificacion" value="#{clienteBean.cliente.tipoIdentificacion}" disabled="#{clienteBean.enModificar}" style="width:175px">
+                            <f:selectItem itemLabel="Seleccionar uno" itemValue="" />
+                            <f:selectItem itemLabel="Cedula" itemValue="CED" />
+                            <f:selectItem itemLabel="RUC" itemValue="RUC" />
+                        </p:selectOneMenu>                        
                         <p:outputLabel for="identificacion" value="Identificacion" />
                         <p:inputText id="identificacion" value="#{clienteBean.cliente.identificacion}"  />                   
                         <p:outputLabel for="email" value="Email" />

@@ -44,6 +44,8 @@ public class ReservaService {
     }
 
     public void modificar(Reserva reserva) {
+        Reserva aux = this.reservaFacade.findOne("codigo",reserva.getCodigo());
+        reserva.setId(aux.getId());
         this.reservaFacade.save(reserva);
     }
 
